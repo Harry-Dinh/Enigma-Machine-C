@@ -4,12 +4,25 @@ Rotor::Rotor(string identifier) {
     this->identifier = identifier;
     this->initialSetting = 1;
     this->currentSetting = 1;
+    this->connectedRotor = nullptr;
 }
 
 Rotor::Rotor(string identifier, int initialSetting) {
     this->identifier = identifier;
     this->initialSetting = initialSetting;
     this->currentSetting = initialSetting;
+    this->connectedRotor = nullptr;
+}
+
+Rotor::Rotor(string identifier, int initialSetting, Rotor* connectedRotor) {
+    this->identifier = identifier;
+    this->initialSetting = initialSetting;
+    this->currentSetting = initialSetting;
+    this->connectedRotor = connectedRotor;
+}
+
+Rotor::~Rotor() {
+    delete connectedRotor;
 }
 
 int Rotor::getCurrentSetting() const { return this->currentSetting; }
@@ -25,12 +38,16 @@ string Rotor::getLetter(int index) const {
     return letters[index];
 }
 
+void Rotor::connectRotor(Rotor* connectedRotor) { this->connectedRotor = connectedRotor; }
+
 void Rotor::rotate() {
     if (currentSetting == NUM_LETTERS) {
         currentSetting = 1;
+        if (connectedRotor != nullptr) {
+            /// @todo This might cause a recursive infinite loop...
+            connectedRotor->rotate();
+        }
     } else {
         currentSetting++;
     }
-
-    /// @todo Might want to consider a condition where you direct the instruction to rotate the connected rotor after 26 rotations of the current one.
 }
