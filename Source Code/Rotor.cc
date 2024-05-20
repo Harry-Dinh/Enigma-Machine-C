@@ -17,16 +17,16 @@ int Rotor::getCurrentSetting() const { return this->currentSetting; }
 string Rotor::getIdentifier() const { return this->identifier; }
 
 string Rotor::getLetter(int index) const {
-    if (index < 0 || index > MAX_LETTERS) {
+    if (index < 0 || index > NUM_LETTERS) {
         cout << "Rotor::getLetter()--Index out of bounds error!" << endl;
-        /// @todo Might want to do something else instead of crashing the program here...
+        /// @todo Try throwing an error here instead of crashing the program, and figure out how to handle it should it occur. Look up on how to throw and handle errors with C++.
         exit(1);
     }
     return letters[index];
 }
 
 void Rotor::rotate() {
-    if (currentSetting == MAX_LETTERS) {
+    if (currentSetting == NUM_LETTERS) {
         currentSetting = 1;
     } else {
         currentSetting++;

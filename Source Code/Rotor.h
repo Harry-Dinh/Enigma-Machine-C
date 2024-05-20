@@ -6,7 +6,7 @@
 using namespace std;
 
 /// @brief The maximum number of letters on a rotor.
-#define MAX_LETTERS 26
+#define NUM_LETTERS 26
 
 /// @brief A class that represent a single rotor on the Enigma machine
 class Rotor {
@@ -21,7 +21,7 @@ class Rotor {
         string identifier;
 
         /// @brief An array of strings holding all the letters in the alphabet (capital letters only!)
-        const string letters[MAX_LETTERS] = {
+        const string letters[NUM_LETTERS] = {
             "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
         };
 
