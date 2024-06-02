@@ -45,6 +45,7 @@ void Rotor::rotate() {
         currentSetting = 1;
         if (connectedRotor != nullptr) {
             /// @todo This might cause a recursive infinite loop...
+            cout << connectedRotor->identifier <<  " has rotated" << endl;
             connectedRotor->rotate();
         }
     } else {

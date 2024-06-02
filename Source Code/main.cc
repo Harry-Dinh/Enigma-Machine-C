@@ -1,8 +1,13 @@
 #include <iostream>
+#include "Rotor.h"
 
 using namespace std;
 
 int main() {
-    // The beginning of the Enigma Machine journey...
+    // Rotor class test
+    Rotor mainRotor = Rotor("Main", 1);
+    Rotor* secondaryRotor = new Rotor("Secondary");
+    mainRotor.connectRotor(secondaryRotor);
+
     return 0;
 }
