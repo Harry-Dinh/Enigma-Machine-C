@@ -17,6 +17,9 @@ class Rotor {
         /// @brief The initial setting for the rotor. Set when initializing a Rotor class (or when choosing the rotors to put in the machine IRL.) This value will be set to 1 if no value is provided when initializing.
         int initialSetting;
 
+        /// @brief The number of times the rotor rotated.
+        int rotateCount;
+
         /// @brief The name (identifier of the rotor).
         string identifier;
 
@@ -35,6 +38,7 @@ class Rotor {
         ~Rotor();
 
         int getCurrentSetting() const;
+        int getRotateCount() const;
         string getIdentifier() const;
         string getLetter(int index) const;
 
@@ -42,6 +46,8 @@ class Rotor {
 
         /// @brief Shift the current setting one step up. If the current setting is at 26, the next will be 1 (looping back from Z to A). This function replicate the physical action of rotating the rotor.
         void rotate();
+
+        void print();
 };
 
 #endif

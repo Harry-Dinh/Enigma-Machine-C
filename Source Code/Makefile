@@ -1,7 +1,13 @@
 cflag = -std=c++11
 objects = Rotor.o
 
-all:
+run: compile
+	./enigma
+
+vrun: compile
+	valgrind --leak-check=full ./enigma
+
+compile: Rotor.o
 	g++ $(cflag) -o enigma $(objects) main.cc
 
 Rotor.o: Rotor.h Rotor.cc
