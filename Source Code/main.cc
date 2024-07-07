@@ -16,13 +16,17 @@ int main() {
         cout << "Enter 1 to test, 0 to stop: ";
         cin >> input;
 
-        if (input == 1) {
-            mainRotor.rotate();
-            mainRotor.print();
-            secondaryRotor->print();
-        } else {
-            cout << "Stopping test" << endl;
-            isRunning = false;
+        switch (input) {
+            case 0:
+                cout << "Stopping program now..." << endl;
+                isRunning = false;
+                break;
+            case 1:
+                mainRotor.rotate();
+                mainRotor.print();
+                secondaryRotor->print();
+            default:
+                cout << "Not an option, 1 or 0 only!" << endl;
         }
     }
 

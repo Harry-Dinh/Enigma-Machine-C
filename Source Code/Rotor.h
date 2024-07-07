@@ -18,7 +18,7 @@ class Rotor {
         int initialSetting;
 
         /// @brief The number of times the rotor rotated.
-        int rotateCount;
+        int rotationCount;
 
         /// @brief The name (identifier of the rotor).
         string identifier;
@@ -27,21 +27,39 @@ class Rotor {
         Rotor* connectedRotor;
 
         /// @brief An array of strings holding all the letters in the alphabet (capital letters only!)
-        const string letters[NUM_LETTERS] = {
-            "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
+        const char LETTERS[NUM_LETTERS] = {
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
         };
 
     public:
+
+        // CONSTRUCTORS
+
         Rotor(string identifier);
         Rotor(string identifier, int initialSetting);
         Rotor(string identifier, int initialSetting, Rotor* connectedRotor);
+
+        // DESTRUCTOR
+
         ~Rotor();
 
+        /// @brief Get the letter (number in the alphabet) that the letter is currently on.
         int getCurrentSetting() const;
-        int getRotateCount() const;
-        string getIdentifier() const;
-        string getLetter(int index) const;
 
+        /// @brief Get the current rotation count that the rotor has rotated so far. 
+        int getRotateCount() const;
+
+        /// @brief Return the name (identifier) of this rotor. 
+        string getIdentifier() const;
+
+        /// @brief Return the letter at the given index.
+        /// @param index The index in the `LETTERS` array to search for.
+        char getLetter(int index) const;
+
+        /// @brief Return the current letter based on the current setting. This function calls the `getLetter()` function with `currentSetting - 1` passed into the parameter. 
+        char getCurrentLetter() const;
+
+        /// @brief Connect another, premade rotor object to this rotor so they are connected and can be manipulated when this rotor rotates.
         void connectRotor(Rotor* connectedRotor);
 
         /// @brief Shift the current setting one step up. If the current setting is at 26, the next will be 1 (looping back from Z to A). This function replicate the physical action of rotating the rotor.
@@ -49,5 +67,7 @@ class Rotor {
 
         void print();
 };
+
+ostream& operator<<(Rotor& rotor, ostream& out);
 
 #endif
