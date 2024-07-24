@@ -1,34 +1,13 @@
 #include <iostream>
 #include "Rotor.h"
+#include "MainMenu.h"
 
 using namespace std;
 
 int main() {
-    bool isRunning = true;
-    int input;
-
-    // Rotor class test
-    Rotor mainRotor = Rotor("Main", 1);
-    Rotor* secondaryRotor = new Rotor("Secondary");
-    mainRotor.connectRotor(secondaryRotor);
-
-    while(isRunning) {
-        cout << "Enter 1 to test, 0 to stop: ";
-        cin >> input;
-
-        switch (input) {
-            case 0:
-                cout << "Stopping program now..." << endl;
-                isRunning = false;
-                break;
-            case 1:
-                mainRotor.rotate();
-                mainRotor.print();
-                secondaryRotor->print();
-            default:
-                cout << "Not an option, 1 or 0 only!" << endl;
-        }
-    }
-
+    // Initialize the main menu for running the program
+    // Comment out the next two lines if you need to write some test codes
+    MainMenu mainMenu = MainMenu();
+    mainMenu.runMenu();
     return 0;
 }

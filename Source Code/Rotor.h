@@ -35,6 +35,7 @@ class Rotor {
 
         // CONSTRUCTORS
 
+        Rotor();
         Rotor(string identifier);
         Rotor(string identifier, int initialSetting);
         Rotor(string identifier, int initialSetting, Rotor* connectedRotor);
@@ -64,6 +65,9 @@ class Rotor {
 
         /// @brief Shift the current setting one step up. If the current setting is at 26, the next will be 1 (looping back from Z to A). This function replicate the physical action of rotating the rotor.
         void rotate();
+
+        /// @brief Encrypt the given character by converting the current setting into the ASCII value of the encrypted character
+        char encryptCharacter(char c);
 
         void print();
 };

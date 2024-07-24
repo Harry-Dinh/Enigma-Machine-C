@@ -1,5 +1,13 @@
 #include "Rotor.h"
 
+Rotor::Rotor() {
+    this->identifier = "Unnamed rotor";
+    this->initialSetting = 1;
+    this->currentSetting = 1;
+    this->connectedRotor = nullptr;
+    this->rotationCount = 0;
+}
+
 Rotor::Rotor(string identifier) {
     this->identifier = identifier;
     this->initialSetting = 1;
@@ -67,6 +75,10 @@ void Rotor::rotate() {
         // Reset the rotation count back to zero
         rotationCount = 0;
     }
+}
+
+char Rotor::encryptCharacter(char c) {
+    
 }
 
 void Rotor::print() {
