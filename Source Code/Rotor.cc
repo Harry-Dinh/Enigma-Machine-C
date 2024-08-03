@@ -14,6 +14,7 @@ Rotor::Rotor(string identifier) {
     this->currentSetting = 1;
     this->connectedRotor = nullptr;
     this->rotationCount = 0;
+    this->wiring = initWiring();
 }
 
 Rotor::Rotor(string identifier, int initialSetting) {
@@ -22,6 +23,7 @@ Rotor::Rotor(string identifier, int initialSetting) {
     this->currentSetting = initialSetting;
     this->connectedRotor = nullptr;
     this->rotationCount = 0;
+    this->wiring = initWiring();
 }
 
 Rotor::Rotor(string identifier, int initialSetting, Rotor* connectedRotor) {
@@ -30,6 +32,7 @@ Rotor::Rotor(string identifier, int initialSetting, Rotor* connectedRotor) {
     this->currentSetting = initialSetting;
     this->connectedRotor = connectedRotor;
     this->rotationCount = 0;
+    this->wiring = initWiring();
 }
 
 Rotor::~Rotor() {
@@ -87,6 +90,25 @@ void Rotor::print() {
     cout << "Current setting: " << this->currentSetting << endl;
     cout << "Rotate count: " << this->rotationCount << endl;
     cout << "=========================================\n" << endl;
+}
+
+map<char, char> Rotor::initWiring() {
+    map<char, char> wiring;
+    int inputIndex = 0;
+    char inValue;
+    char outValue;
+
+    for (int outputIndex = 0; outputIndex < NUM_LETTERS; ++outputIndex) {
+        inValue = LETTERS[randomIndex(0, NUM_LETTERS - 1)];
+        outValue = LETTERS[outputIndex];
+        wiring[inValue] = outValue;
+    }
+    return wiring;
+}
+
+int Rotor::randomIndex(int start, int end) {
+    /// @note This is not generating unique numbers, need to find a different way to generate random unique numbers!
+    return rand() % (end - start + 1) + start;
 }
 
 ostream& operator<<(Rotor& rotor, ostream& out) {

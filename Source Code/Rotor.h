@@ -2,6 +2,7 @@
 #define ROTOR_H
 
 #include <iostream>
+#include <map>
 
 using namespace std;
 
@@ -25,6 +26,9 @@ class Rotor {
 
         /// @brief A pointer to a connected rotor. Set the `nullptr` if there is no rotor connected (i.e. last rotor to be passed through)
         Rotor* connectedRotor;
+
+        /// @brief The wiring of the rotor, which basically convert a letter to a specific letter. The wiring should be assign randomly, but also have a way to initialize a rotor with specific wiring (i.e. for decryption.)
+        map<char, char> wiring;
 
         /// @brief An array of strings holding all the letters in the alphabet (capital letters only!)
         const char LETTERS[NUM_LETTERS] = {
@@ -70,6 +74,12 @@ class Rotor {
         char encryptCharacter(char c);
 
         void print();
+
+        /// @brief Initialize the `wiring` member variable by randomly assigning every key-value pair.
+        map<char, char> initWiring();
+
+        /// @brief Generate a random integer from the given range without repeating numbers.
+        static int randomIndex(int start, int end);
 };
 
 ostream& operator<<(Rotor& rotor, ostream& out);
