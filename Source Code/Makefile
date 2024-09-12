@@ -3,20 +3,20 @@
 # ======================================
 
 # Standard C++ version flag and a variable containing all of the variables to compile into objects
-cflag = -std=c++11
+cflag = -std=c++11 -g
 objects = Rotor.o MainMenu.o EnigmaTest.o
 
 # Compile and run the program without any debugging tools attached
 run: compile
 	./enigma
 
-# Compile and run the program with the Valgrind leak-checking tool attached (Linux only!)
-vrun: compile
-	valgrind --leak-check=full ./enigma
+# Compile and run the program with LLDB for debugging (macOS only!)
+debug: compile
+	lldb ./enigma
 
 # Compile the all of the classes into object files to create the `enigma` executable
 compile: $(objects)
-	g++ $(cflag) -o enigma $(objects) main.cc
+	g++ $(cflag) main.cc -o enigma $(objects)
 
 # Compile the Rotor class into an object file
 Rotor.o: Rotor.h Rotor.cc
