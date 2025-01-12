@@ -81,7 +81,7 @@ void Rotor::rotate() {
 }
 
 char Rotor::encryptCharacter(char c) {
-    
+    /// @todo Implement this function!
 }
 
 void Rotor::print() {
